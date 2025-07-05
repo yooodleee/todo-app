@@ -4,7 +4,7 @@ import TodoItem from "@/components/todo-item";
 import { useTodos } from "@/hooks/use-todos";
 
 export default function Home() {
-  const { todos, addTodo, toggleTodo, deleteTodo } = useTodos()
+  const { todos, addTodo, toggleTodo, deleteTodo, updateTodo } = useTodos()
 
   return (
     <>
@@ -21,6 +21,7 @@ export default function Home() {
               todo={todo}
               onToggle={toggleTodo}
               onDelete={deleteTodo}
+              onUpdate={updateTodo} // 추가
             />
           ))}
         </div>

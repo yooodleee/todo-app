@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { text } from 'stream/consumers'
 
 export type Todo = {
   id: number
@@ -33,9 +34,17 @@ export const useTodos = () => {
     ))
   }
 
+  const updateTodo = (id: number, newText: string) => {
+    setTodos(
+      todos.map((todo) => 
+        todo.id === id ? { ...todo, text: newText } : todo
+      )
+    )
+  }
+
   const deleteTodo = (id: number) => {
     setTodos(todos.filter(todo => todo.id !== id))
   }
 
-  return { todos, addTodo, toggleTodo, deleteTodo }
+  return { todos, addTodo, toggleTodo, deleteTodo, updateTodo }
 }
